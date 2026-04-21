@@ -1,0 +1,99 @@
+# OpenClaw 告警监控配置
+# 复制此文件到 ~/.openclaw/config/alerts.yaml 进行自定义配置
+
+enabled: true
+
+# 告警规则
+rules:
+  # API 配额预警
+  - name: api_quota_warning
+    type: api_usage
+    threshold: 80
+    level: warning
+    channels: [qqbot]
+    enabled: true
+    
+  # API 配额紧急
+  - name: api_quota_critical
+    type: api_usage
+    threshold: 95
+    level: critical
+    channels: [qqbot]
+    enabled: true
+    
+  # 网关离线检测
+  - name: gateway_offline
+    type: health_check
+    retries: 3
+    interval: 10  # 秒
+    level: critical
+    channels: [qqbot]
+    enabled: true
+    
+  # 响应超时检测
+  - name: response_timeout
+    type: performance
+    threshold_ms: 30000
+    window: 5  # 最近 5 次请求
+    level: warning
+    channels: [qqbot]
+    enabled: true
+    
+  # 磁盘空间检测
+  - name: disk_space
+    type: system
+    threshold_percent: 10
+    level: critical
+    channels: [qqbot]
+    enabled: true
+    
+  # 内存占用检测
+  - name: memory_usage
+    type: system
+    threshold_percent: 90
+    level: warning
+    channels: [qqbot]
+    enabled: true
+    
+  # 连续错误检测
+  - name: consecutive_errors
+    type: error
+    threshold: 3
+    window_minutes: 10
+    level: warning
+    channels: [qqbot]
+    enabled: true
+
+# 通知渠道配置
+channels:
+  qqbot:
+    enabled: true
+    chat_id: "qqbot:c2c:685F044879F8CB43AC139D11FBE79CDE"
+    
+  email:
+    enabled: false
+    smtp_host: "smtp.example.com"
+    smtp_port: 587
+    username: "your-email@example.com"
+    password: "your-password"
+    from: "OpenClaw <alerts@example.com>"
+    to: ["admin@example.com"]
+    
+  dingtalk:
+    enabled: false
+    webhook: "https://oapi.dingtalk.com/robot/send?access_token=YOUR_TOKEN"
+    secret: ""  # 可选，加签密钥
+    
+  wechat:
+    enabled: false
+    webhook: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=YOUR_KEY"
+
+# 全局设置
+settings:
+  check_interval: 300  # 检查间隔（秒），默认 5 分钟
+  quiet_hours:  # 免打扰时段（可选）
+    enabled: false
+    start: "23:00"
+    end: "08:00"
+  max_alerts_per_hour: 10  # 每小时最多告警次数，防止轰炸
+  dedup_window: 600  # 告警去重窗口（秒），相同告警在此窗口内只发送一次
