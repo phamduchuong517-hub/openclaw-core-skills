@@ -1,9 +1,0 @@
-[
-  {
-    "channel": "qqbot",
-    "target": "qqbot:c2c:685F044879F8CB43AC139D11FBE79CDE",
-    "message": "ℹ️ *测试告警*\n\n这是一条测试告警消息，确认通知渠道正常工作。\n\n⏰ 2026/3/23 07:38:23",
-    "timestamp": 1774222703544,
-    "level": "info"
-  }
-]
