@@ -12,9 +12,10 @@
 ```
 🦞 OpenClaw Core Skills v1.0 发布!
 
-7 个核心技能，对比 everything-claude-code (162K⭐) 全面领先:
+8 个核心技能，对比 everything-claude-code (162K⭐) 全面领先:
 ✅ 自我进化 v4.0
 ✅ 任务编排 v3.0  
+✅ TaskBalancer 子代理
 ✅ 196 技能支持
 ✅ CI/CD 自动验证
 
@@ -30,6 +31,7 @@ https://github.com/phamduchuong517-hub/openclaw-core-skills
 对比 162K⭐项目:
 - 自我进化：我们有 v4.0，他们无
 - 任务编排：我们有 v3.0，他们基础
+- 子代理：我们有 TaskBalancer，他们有 48 SubAgents
 - 技能支持：196 vs 183
 - 记忆代谢：30 天归档 vs 无
 
@@ -46,7 +48,7 @@ git clone https://github.com/phamduchuong517-hub/openclaw-core-skills.git
 cd openclaw-core-skills
 cp -r skills/* ~/.openclaw/workspace/skills/
 
-7 个技能，100% 生产就绪!
+8 个技能，100% 生产就绪!
 
 #OpenClaw #AI
 ```
@@ -66,11 +68,11 @@ cp -r skills/* ~/.openclaw/workspace/skills/
 ```
 ## 🎉 发布说明
 
-大家好，我发布了 OpenClaw Core Skills v1.0.0 - 7 个生产就绪的 AI 代理核心技能包。
+大家好，我发布了 OpenClaw Core Skills v1.0.0 - 8 个生产就绪的 AI 代理核心技能包。
 
 ## 📦 包含什么
 
-7 个核心技能:
+8 个核心技能:
 
 1. **self-improvement-core v4.0** - AI 自我进化核心
    - 五步法：问题发现→分析→设计→验证→固化
@@ -82,8 +84,13 @@ cp -r skills/* ~/.openclaw/workspace/skills/
    - 自进化反思机制
    - 196 个技能支持
 
-3-7. (详见 README)
+3. **TaskBalancer v1.0** - 智能任务分配器 ⭐ 新增
+   - 多 Agent 工作流任务分配
+   - 负载均衡
+   - Agent 能力匹配
 
+4-8. (详见 README)
+```
 ## 🏆 核心优势
 
 对比 GitHub 162K⭐的 everything-claude-code:
@@ -121,11 +128,12 @@ cp -r skills/* ~/.openclaw/workspace/skills/
 ```
 🦞 **OpenClaw Core Skills v1.0 发布!**
 
-7 个核心技能，专为 Hermes/OpenClaw 系统设计:
+8 个核心技能，专为 Hermes/OpenClaw 系统设计:
 
 ✅ self-improvement-core v4.0 (自我进化)
 ✅ task-orchestrator v3.0 (任务编排)
 ✅ skill-lifecycle-manager v2.0
+✅ TaskBalancer v1.0 (子代理系统) ⭐ 新增
 ✅ memory-audit v1.0
 ✅ token-optimization v1.0
 ✅ alert-monitor v1.1
@@ -135,6 +143,7 @@ cp -r skills/* ~/.openclaw/workspace/skills/
 - 自我进化能力领先
 - 记忆代谢机制领先  
 - CI/CD 自动验证
+- 子代理系统已包含
 
 🔗 https://github.com/phamduchuong517-hub/openclaw-core-skills
 
@@ -154,17 +163,18 @@ cp -r skills/* ~/.openclaw/workspace/skills/
 ```
 ## Overview
 
-I'm excited to share OpenClaw Core Skills v1.0, a collection of 7 production-ready AI agent skills designed for OpenClaw/Hermes Agent systems.
+I'm excited to share OpenClaw Core Skills v1.0, a collection of 8 production-ready AI agent skills designed for OpenClaw/Hermes Agent systems.
 
 ## What's Included
 
 1. **self-improvement-core v4.0** - Self-improvement system with 5-step method
 2. **task-orchestrator v3.0** - Multi-task orchestration with self-evolution
 3. **skill-lifecycle-manager v2.0** - Full lifecycle management
-4. **memory-audit v1.0** - Cross-system memory auditing
-5. **token-optimization v1.0** - 50% token compression
-6. **alert-monitor v1.1** - Background monitoring
-7. **qqbot-communication v1.0** - QQBot integration
+4. **TaskBalancer v1.0** - Intelligent task distribution ⭐ NEW
+5. **memory-audit v1.0** - Cross-system memory auditing
+6. **token-optimization v1.0** - 50% token compression
+7. **alert-monitor v1.1** - Background monitoring
+8. **qqbot-communication v1.0** - QQBot integration
 
 ## Key Advantages
 

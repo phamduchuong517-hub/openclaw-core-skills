@@ -1,6 +1,6 @@
 # 🦞 OpenClaw Core Skills
 
-**AI 助手自我进化核心技能包** - 来自 OpenClaw (小龙虾) 系统的 7 个核心技能
+**AI 助手自我进化核心技能包** - 来自 OpenClaw (小龙虾) 系统的 8 个核心技能
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Hermes Agent](https://img.shields.io/badge/Hermes-Agent-blue)](https://github.com/project-hermes/hermes-agent)
@@ -13,6 +13,7 @@
 > **对比 everything-claude-code (162K⭐) 能力评估**:
 > - ✅ self-improvement-core v4.0 **领先** (五步法 + 代谢机制)
 > - ✅ task-orchestrator v3.0 **领先** (自进化反思)
+> - ✅ TaskBalancer v1.0 **已包含** (多 Agent 任务分配)
 > - ✅ 196 个技能 **领先** (vs 183)
 > - ✅ memory 代谢机制 **领先** (30 天自动归档)
 
@@ -25,6 +26,7 @@
 | **self-improvement-core** | v4.0.0 | AI 助手自我进化核心 - 五步法 + 错误日志 + 自动记忆 + 深度搜索 + 自适应推理 + 习惯形成 + 系统代谢 |
 | **task-orchestrator** | v3.0.0 | 任务编排器 - 规划→执行→监控→检查→自进化反思完整工作流 |
 | **skill-lifecycle-manager** | v2.0.0 | 技能生命周期管理 - 创建 + 评估 + 审核 + 发现 + 进化 |
+| **TaskBalancer** | v1.0.0 | 智能任务分配器 - 多 Agent 工作流的任务分配和负载均衡 ⭐ 新增 |
 | **memory-audit** | v1.0.0 | 跨系统记忆审计 - OpenClaw ↔ Hermes 双系统同步状态检查 |
 | **token-optimization** | v1.0.0 | Token 优化 - 上下文压缩 + 智能缓存 + 流式输出 (减少 50% Token) |
 | **alert-monitor** | v1.1.0 | 告警监控 - API 配额、网关健康、QQBot 多渠道通知 |
@@ -252,6 +254,62 @@ self-evolution design_solution "4 层搜索策略：L1→L2→L3→L4"
 
 ---
 
+### 8. TaskBalancer v1.0.0 ⭐ 新增
+
+**智能任务分配器** - 多 Agent 工作流的任务分配和负载均衡
+
+#### 核心能力
+
+```
+✅ 智能任务分配
+   根据任务类型自动匹配最适合的 Agent
+
+✅ 负载均衡
+   监控每个 Agent 的当前负载 → 避免单个 Agent 过载
+   → 自动分配到最空闲的 Agent
+
+✅ 任务优先级管理
+   🔴 高优先级：紧急任务 → 立即分配给空闲 Agent
+   🟡 中优先级：常规任务 → 按能力匹配分配
+   🟢 低优先级：后台任务 → 空闲时处理
+
+✅ Agent 能力匹配
+   写作类 → V6 写作工厂
+   搜索类 → UltimateSearch
+   爬虫类 → Scrapling
+   归档类 → Archive
+
+✅ 性能监控
+   任务完成率 → 平均响应时间 → Agent 利用率 → 队列长度
+```
+
+#### 使用示例
+
+```bash
+# 分配高优先级任务
+/balance assign "写小说第三章" --priority high
+
+# 查看 Agent 状态
+/balance status
+
+# 查看队列
+/balance queue
+```
+
+#### 架构组件
+
+```
+TaskBalancer/
+├── memory.md          # 任务历史统计
+├── agents.md          # Agent 能力配置
+├── queues/            # 任务队列
+└── metrics.md         # 性能指标
+```
+
+**对比外部**: everything-claude-code 的 `48 SubAgents` 系统
+
+---
+
 ## 🏗️ 系统架构
 
 ```
@@ -271,11 +329,17 @@ self-evolution design_solution "4 层搜索策略：L1→L2→L3→L4"
                               │
                               ▼
                     ┌─────────────────┐
-                    │   记忆/通信系统   │
-                    │ memory-audit    │
-                    │ token-optimization│
-                    │ alert-monitor   │
+                    │  任务分配系统 ⭐  │
+                    │  TaskBalancer   │
                     └─────────────────┘
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+        ▼                     ▼                     ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ 记忆/通信系统 │    │  性能优化    │    │  监控系统    │
+│ memory-audit │    │token-optim.  │    │alert-monitor │
+└──────────────┘    └──────────────┘    └──────────────┘
 ```
 
 ---
@@ -287,7 +351,7 @@ self-evolution design_solution "4 层搜索策略：L1→L2→L3→L4"
 | 自我进化系统 | v4.0 完整版 | agent-introspection | ✅ **领先** |
 | 任务编排 | v3.0 完整版 | planner + loop | ✅ **领先** |
 | 技能系统 | 196 个技能 | 183 个技能 | ✅ **领先** |
-| 子代理系统 | TaskBalancer | 48 SubAgents | ⚠️ 框架有 |
+| 子代理系统 | ✅ TaskBalancer v1.0 | 48 SubAgents | ✅ **已包含** |
 | Hooks 自动化 | auto-memory-recorder | hooks/ | ✅ 相当 |
 | 记忆系统 | memory-audit + 代谢 | pro-workflow | ✅ **领先** |
 | Token 优化 | 50% 压缩 | code-simplifier | ✅ **领先** |
